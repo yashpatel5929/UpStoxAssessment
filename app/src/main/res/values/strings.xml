@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">UpStoxAssessment</string>
+    <string name="no_data_found">No Data Found</string>
+    <string name="ltp">LTP :</string>
+    <string name="net_qty">NET QTY :</string>
+    <string name="ltp_value_string">₹ %s</string>
+    <string name="p_amp_l"><![CDATA[P&L]]></string>
+</resources>
