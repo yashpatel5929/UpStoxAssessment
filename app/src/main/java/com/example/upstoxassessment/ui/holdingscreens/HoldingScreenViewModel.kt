@@ -1,8 +1,8 @@
 package com.example.upstoxassessment.ui.holdingscreens
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.upstoxassessment.domain.model.CalculatedData
 import com.example.upstoxassessment.domain.model.StockHoldingData
 import com.example.upstoxassessment.domain.usecases.StockHoldingUseCase
 import com.example.upstoxassessment.ui.utils.Resource
@@ -23,12 +23,16 @@ class HoldingScreenViewModel @Inject constructor(
     private val _stockHoldingData = MutableStateFlow<List<StockHoldingData>>(listOf())
     val stockHoldingData = _stockHoldingData.asStateFlow()
 
+    private val _calculatedData = MutableStateFlow<CalculatedData?>(null)
+    val calculatedData = _calculatedData.asStateFlow()
+
     fun getData() =
         viewModelScope.launch {
             _loadingState.emit(true)
-            when(val result = stockHoldingUseCase.invoke()) {
+            when (val result = stockHoldingUseCase.invoke()) {
                 is Resource.Success -> {
                     _loadingState.emit(false)
+                    _calculatedData.emit(stockHoldingUseCase.calculateData(result.data ?: listOf()))
                     result.data?.let { _stockHoldingData.emit(it) }
                 }
 

@@ -4,7 +4,7 @@ import com.example.upstoxassessment.data.remote.dtos.StockHoldingResponseDto
 import com.example.upstoxassessment.data.utils.DomainMapper
 import com.example.upstoxassessment.domain.model.StockHoldingData
 
-class StockHoldingMapper : DomainMapper<StockHoldingResponseDto , List<StockHoldingData>> {
+class StockHoldingMapper : DomainMapper<StockHoldingResponseDto, List<StockHoldingData>> {
     override fun mapToDomainModel(data: StockHoldingResponseDto): List<StockHoldingData> {
         return data.data?.userHolding?.map {
             StockHoldingData(
@@ -12,7 +12,8 @@ class StockHoldingMapper : DomainMapper<StockHoldingResponseDto , List<StockHold
                 quantity = it.quantity,
                 ltp = it.ltp,
                 avgPrice = it.avgPrice,
-                close = it.close
+                close = it.close,
+                totalPAndL = ((it.ltp!! * it.quantity!!) - (it.avgPrice!! * it.quantity!!))
             )
         } ?: listOf()
     }

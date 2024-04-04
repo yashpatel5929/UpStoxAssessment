@@ -5,5 +5,6 @@ data class StockHoldingData(
     val quantity: Int?,
     val ltp: Double?,
     val avgPrice: Double?,
-    val close: Double?
+    val close: Double?,
+    val totalPAndL: Double?,
 )

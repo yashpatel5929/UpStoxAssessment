@@ -9,36 +9,145 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_stockHolder"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_list_stock_holding"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/clExpandableLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        tools:listitem="@layout/item_list_stock_holding" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clExpandableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/sdp_10"
+        android:visibility="gone"
+        android:background="@color/lightGray"
+        app:layout_constraintBottom_toTopOf="@+id/fixedCL">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/currentValueLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/sdp_10"
+            android:text="@string/current_value"
+            android:textSize="@dimen/ssp_15"
+            app:layout_constraintEnd_toStartOf="@id/tvCurrentValue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCurrentValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:paddingVertical="@dimen/sdp_10"
+            android:textSize="@dimen/ssp_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/currentValueLabel"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTotalInvestmentLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/sdp_10"
+            android:text="@string/total_investment"
+            android:textSize="@dimen/ssp_15"
+            app:layout_constraintEnd_toStartOf="@id/tvTotalInvestmentValue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currentValueLabel" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTotalInvestmentValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:paddingVertical="@dimen/sdp_10"
+            android:textSize="@dimen/ssp_15"
+            app:layout_constraintBottom_toBottomOf="@id/tvTotalInvestmentLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvTotalInvestmentLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvCurrentValue" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTodayPAndLLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/sdp_10"
+            android:text="@string/today_s_profit_loss"
+            android:textSize="@dimen/ssp_15"
+            app:layout_constraintEnd_toStartOf="@+id/tvTodayPAndLValue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalInvestmentLabel" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTodayPAndLValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:paddingVertical="@dimen/sdp_10"
+            android:textSize="@dimen/ssp_15"
+            app:layout_constraintBottom_toBottomOf="@id/tvTodayPAndLLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvTodayPAndLLabel"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalInvestmentValue" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/sdp_20"
+            android:layout_marginEnd="@dimen/sdp_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTodayPAndLLabel"
+            android:background="@color/black"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fixedCL"
+        android:elevation="@dimen/sdp_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/sdp_15"
+        android:visibility="gone"
+        android:background="@color/lightGray"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvProfitAndLossLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/baseline_keyboard_arrow_up_24"
+            android:drawablePadding="@dimen/sdp_10"
+            android:gravity="center"
+            android:text="@string/profit_loss"
+            android:textSize="@dimen/ssp_15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvProfitAndLossValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/profit_loss"
+            android:textSize="@dimen/ssp_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
         android:id="@+id/progress_circular"
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvNoDataFound"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/no_data_found"
-        android:gravity="center"
         android:visibility="gone"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

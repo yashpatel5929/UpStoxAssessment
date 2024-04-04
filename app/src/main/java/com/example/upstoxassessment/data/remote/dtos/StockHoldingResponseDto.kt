@@ -17,11 +17,11 @@ data class UserHolding(
     @SerializedName("symbol")
     var symbol: String? = null,
     @SerializedName("quantity")
-    var quantity: Int? = null,
+    var quantity: Int? = 0,
     @SerializedName("ltp")
-    var ltp: Double? = null,
+    var ltp: Double? = 0.0,
     @SerializedName("avgPrice")
-    var avgPrice: Double? = null,
+    var avgPrice: Double? = 0.0,
     @SerializedName("close")
     var close: Double? = null
 )
